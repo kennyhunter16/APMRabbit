@@ -4,6 +4,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../images/style.css" />
 <title>APMRabbit GoPro Software</title>
+<script type='text/JavaScript'>
+			function getXhr(){
+				var xhr = null;
+				if(window.XMLHttpRequest) // Firefox and others
+					xhr = new XMLHttpRequest();
+				else if(window.ActiveXObject){ // Internet Explorer
+					try {
+						xhr = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+				}
+				else { // XMLHttpRequest no supported
+					alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest...");
+					xhr = false;
+				}
+				return xhr
+			}
+ 
+			/**
+			* Command
+			*/
+			function command(device, app, command){
+				var xhr = getXhr()
+ 
+				xhr.onreadystatechange = function(){
+ 
+					if(xhr.readyState == 4 && xhr.status == 200){
+						alert(xhr.responseText);
+					}
+				}
+				xhr.open('GET','http://10.5.5.9:80/'+device+'/'+app+'?t='+document.getElementById('wifiPassword').value+'&p='+command);
+				xhr.send(null);
+			}
+	</script>		
 </head>
 
 <body>
@@ -18,6 +53,7 @@
         	<div class="link"><a href="../index.html">home</a></div>
             <div class="link"><a href="about.html">about</a></div>
             <div class="link"><a href="#">stream</a></div>
+            <div class="link"><a href="settings.html">settings</a></div>
             <div class="link"><a href="view.html">view content</a></div>
             <div class="link"><a href="#">faq</a></div>
             <div class="link"><a href="#">contact</a></div>
@@ -26,16 +62,34 @@
         <div class="contentText">
 		<embed type="application/x-vlc-plugin"
 			   name="goprolivestream"
-			   autoplay="yes" loop="no" width="400" height="300"
+			   autoplay="yes" loop="no" width="675" height="400"
 			   target="http://10.5.5.9:8080/live/amba.m3u8" />
         </div>
-        <div class="contentTitle"><h1>Thanks to</h1></div>
+        <div class="contentTitle"><h1>Basic Controls</h1></div>
         <div class="contentText">
-          <p>Bryant Smith for making this HTML Template, check him out here -  <a href="http://www.bryantsmith.com">BryantSmith.com</a></p>
-          <p>&nbsp;</p>
+		Type your camera password ("goprohero" default):
+        <input required="required" placeholder="goprohero" id="wifiPassword"
+        type="password" class="password" input autocomplete="on" /><button>Set Password</button>
+		<p><h2>Please select a camera mode first:</h2></p>
+		
+           <table style="width:100%">
+				<tr>
+				<td><input type="image" src="../images/gopro_video.png" onclick="command('camera','CM','%00')" name="Video Mode" width="90" height="70"></td>
+				<td><input type="image" src="../images/gopro_photo.png" onclick="command('camera','CM','%01')" name="Photo Mode" width="90" height="70"></td>
+				<td><input type="image" src="../images/gopro_burst.png" onclick="command('camera','CM','%02')" name="Burst Mode" width="90" height="70"></td>
+				<td><input type="image" src="../images/gopro_timelapse.png" onclick="command('camera','CM','%03')" name="Time Lapse Mode" width="90" height="70"></td>
+				</tr>
+			<tr>
+				<td><button type="button" onclick="command('bacpac','SH','%01')">Start Recording</button></td>
+				<td><button type="button" onclick="command('bacpac','SH','%01')">Take a Picture</button></td>
+				<td><button type="button" onclick="command('bacpac','SH','%01')">Start Burst</button></td>
+				<td><button type="button" onclick="command('bacpac','SH','%01')">Start TimeLapse</button></td>
+				</tr>
+			<tr>
+				<td><button type="button" onclick="command('bacpac','SH','%00')">Stop Recording</button></td><td></td><td></td>
+				<td><button type="button" onclick="command('bacpac','SH','%00')">Start TimeLapse</button></td>
+				</tr>
+		</table> 
         </div>
-        <div class="contentTitle"><h1>Yet Another?</h1></div>
-        <div class="contentText">Each title is an H1 tag, so choose them carefully :)</div>  
-</div>
 </body>
 </html>

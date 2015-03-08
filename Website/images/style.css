@@ -1,5 +1,3 @@
-/* A Free Design by Bryant Smith (bryantsmith.com) */
-
 html, body {
 text-align: center;
 }
@@ -8,20 +6,20 @@ p {text-align: left;}
 body {
 	margin: 0;
 	padding: 0;
-	background: #697281;
+	background: url("rover_background.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	text-align: left;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #F1F5F8;
-	background-color:#2A2A2A;
 }
 *
 {
   margin: 0 auto 0 auto;
  text-align:left;}
-
-
-/* A Free Design by Bryant Smith (bryantsmith.com) */
 
 html, body {
 text-align: center;

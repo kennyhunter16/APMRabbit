@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><script src="http://jwpsrv.com/library/9Xd9rv1IEeKDbSIACusDuQ.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../images/style.css" />
+<title>APMRabbit GoPro Software</title>
+
+<script type='text/JavaScript'>
+		function getXhr(){
+			var xhr = null;
+			if(window.XMLHttpRequest) // Firefox and others
+				xhr = new XMLHttpRequest();
+			else if(window.ActiveXObject){ // Internet Explorer
+				try {
+					xhr = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+				}
+			else { // XMLHttpRequest no supported
+					alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest...");
+					xhr = false;
+				}
+				return xhr
+			}
+ 
+			function command(device, app, command){
+				var xhr = getXhr()
+ 
+				xhr.onreadystatechange = function(){
+ 
+					if(xhr.readyState == 4 && xhr.status == 200){
+						alert(xhr.responseText);
+					}
+				}
+				xhr.open('GET','http://10.5.5.9:80/'+device+'/'+app+'?t='+document.getElementById('wifiPassword').value+'&p='+command);
+				xhr.send(null);
+			}
+  </script>
+</head>
+
+<body>
+    <div id="page">
+		
+        <div id="header">
+        	<h1>APMRabbit</h1>
+            <h2>Take control, stream, record your GoPro on your APMRover.</h2>
+            
+      </div>
+  <div id="bar">
+        	<div class="link"><a href="../index.html">home</a></div>
+            <div class="link"><a href="about.html">about</a></div>
+            <div class="link"><a href="stream.html">stream</a></div>
+            <div class="link"><a href="#">settings</a></div>
+            <div class="link"><a href="view.html">view content</a></div>
+            <div class="link"><a href="#">faq</a></div>
+      </div>
+        <div class="contentTitle"><h1>Change Rabbit Eye Settings</h1></div>
+        <div class="contentText">
+        
+        Type your camera password ("goprohero" default):
+        <input required="required" placeholder="goprohero" id="wifiPassword"
+        type="password" class="password" input autocomplete="on" /><button>Set Password</button>
+		<p></p>
+			<div id="control1"> <br>
+			    &nbsp;Buttons
+				<button id="goproon" onclick="command('bacpac','PW','%01')">Camera ON</button>
+				<button onclick="command('bacpac','PW','%00')"> Camera OFF</button>
+                <button id="recordtrigger"  onclick="command('bacpac','SH','%01')">Start Rec / Shutter Button</button>
+				<button id="stoptrigger" onclick="command('bacpac','SH','%00')">Stop Rec </button>
+                
+                <br>
+                &nbsp;Mode
+                &nbsp;<button onclick="command('camera','CM','%00')">Video</button>
+                &nbsp;<button onclick="command('camera','CM','%01')">Photo</button>
+                &nbsp;<button onclick="command('camera','CM','%02')">Burst</button>
+                &nbsp;<button onclick="command('camera','CM','%03')">Timelapse</button>
+                &nbsp;<button onclick="command('camera','CM','%05')">Play (HDMI)</button>
+                              
+	<hr>
+	<div id="content">
+	<table>
+	<tr><td>Video resolution</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','VV','%06')">4K</option>
+		<option onclick="command('camera','VV','%08')">4K 17:9</option>
+		<option onclick="command('camera','FS','%01')">4K 15FPS</option>
+		<option onclick="command('camera','FS','%00')">4K 12FPS</option>
+		<option onclick="command('camera','VV','%07')">2K</option>
+		<option onclick="command('camera','VV','%05')">2.7k</option>
+		<option onclick="command('camera','FS','%02')">2.7k 24FPS</option>
+		<option onclick="command('camera','FS','%04')">2.7k 30FPS</option>
+		<option onclick="command('camera','VV','%04')">1440p</option>
+		<option onclick="command('camera','FS','%05')">1440 48FPS</option>
+		<option onclick="command('camera','VV','%09')">1080 SuperView</option>
+		<option onclick="command('camera','VV','%03')">1080</option>
+		<option onclick="command('camera','VV','%02)">960p</option>
+		<option onclick="command('camera','VV','%0a')">720 SuperView</option>
+		<option onclick="command('camera','VV','%01')">720p</option></select></td></tr>
+		
+	<tr><td>Auto Low Light</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','LW','%01')">ON</option>
+		<option onclick="command('camera','LW','%00')">OFF</option></select></td></tr>
+		
+	<tr><td>ISO Gain</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','GA','%00')">6400</option>
+		<option onclick="command('camera','GA','%01')">1600</option>
+		<option onclick="command('camera','GA','%02')">400</option></select></td></tr>
+		
+	<tr><td>Color settings</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','CO','%01')">FLAT</option>
+		<option onclick="command('camera','CO','%00')">GOPRO COLOR</option></select></td></tr>
+		
+	<tr><td>Sharpness</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','SP','%00')">High</option>
+		<option onclick="command('camera','SP','%01')">Medium</option>
+		<option onclick="command('camera','SP','%02')">Low</option></select></td></tr>
+		
+	<tr><td>Exposure compensation</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','EV','%06')">-2.0</option>
+		<option onclick="command('camera','EV','%07')">-1.5</option>
+		<option onclick="command('camera','EV','%08')">-1.0</option>
+		<option onclick="command('camera','EV','%09')">-0.5</option>
+		<option onclick="command('camera','EV','%10')">0</option>
+		<option onclick="command('camera','EV','%11')">+0.5</option>
+		<option onclick="command('camera','EV','%12')">+1.0</option>
+		<option onclick="command('camera','EV','%13')">+1.5</option>
+		<option onclick="command('camera','EV','%14')">+2.0</option></select></td></tr>	
+		
+	<tr><td>Video Protune Resolutions</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','PT','%01')">Protune ON</option>
+		<option onclick="command('camera','VV','%00')">720 120T</option>
+		<option onclick="command('camera','VV','%02')">960 100T</option>
+		<option onclick="command('camera','VV','%03')">1080 60T</option>
+		<option onclick="command('camera','VV','%04')">1440 48T</option>
+		<option onclick="command('camera','VV','%05')">2.7k 30T</option>
+		<option onclick="command('camera','VV','%07')">2.7kCin 24T</option>
+		<option onclick="command('camera','VV','%06')">4k 15T</option>
+		<option onclick="command('camera','VV','%08')">4kCin 12T</option></select></td></tr>  
+		
+     <tr><td>White Balance:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','PT','%01')">Protune ON</option>
+		<option onclick="command('camera','WB','%00')">AUTO</option>
+		<option onclick="command('camera','WB','%01')">3000k</option>
+        <option onclick="command('camera','WB','%02')">5500k</option>
+        <option onclick="command('camera','WB','%03')">6500k</option>
+        <option onclick="command('camera','WB','%04')">CAM RAW</option></select></td></tr>
+                        
+     <tr><td>Auto Low Light:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','LW','%00')">OFF</option>
+        <option onclick="command('camera','LW','%01')">ON</option></select></td></tr>
+        
+	<tr><td>Orientation:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','UP','%00')">Up</option>
+		<option onclick="command('camera','UP','%01')">Down</option></select></td></tr>
+
+	<tr><td>FOV:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','FV','%00')">wide</option>
+		<option onclick="command('camera','FV','%01')">medium</option>
+		<option onclick="command('camera','FV','%02')">narrow</option></select></td></tr>
+		
+	<tr><td>Photo Definition:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','PR','%05')">12mp wide</option>
+		<option onclick="command('camera','PR','%06')">7mp medium</option>
+		<option onclick="command('camera','PR','%04')">7mp wide</option>
+		<option onclick="command('camera','PR','%03')">5mp medium</option></select></td></tr>
+                  
+    <tr><td>Timelapse Interval:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','TI','%00')">0,5sec</option>
+		<option onclick="command('camera','TI','%01')">1sec</option>
+		<option onclick="command('camera','TI','%02')">2sec</option>
+		<option onclick="command('camera','TI','%05')">5sec</option>
+		<option onclick="command('camera','TI','%0a')">10sec</option>
+		<option onclick="command('camera','TI','%1e')">30sec</option>
+		<option onclick="command('camera','TI','%3c')">60sec</option></select></td></tr>
+		
+	<tr><td>Volume:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','BS','%00')">0%</option>
+		<option onclick="command('camera','BS','%01')">70%</option>
+		<option onclick="command('camera','BS','%02')">100%</option></select></td></tr>
+
+    <tr><td>Loop video:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','LO','%00')">OFF</option>
+        <option onclick="command('camera','LO','%01')">5Min</option>
+        <option onclick="command('camera','LO','%02')">20Min</option>
+        <option onclick="command('camera','LO','%03')">60Min</option>
+        <option onclick="command('camera','LO','%04')">MAX</option></select></td></tr>
+                        
+     <tr><td>Protune:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','PT','%00')">OFF</option>
+        <option onclick="command('camera','PT','%01')">On</option></select></td></tr>
+                        
+	<tr><td>LEDs:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','LB','%00')">No leds</option>
+		<option onclick="command('camera','LB','%01')">2 Leds</option>
+		<option onclick="command('camera','LB','%02')">4 Leds</option></select></td></tr>
+                        
+	<tr><td>Spot meter:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','EX','%00')">Off</option>
+		<option onclick="command('camera','EX','%01')">ON </option></select></td></tr>
+                       
+    <tr><td>One Button Mode:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','OB','%00')">Off</option>
+		<option onclick="command('camera','OB','%01')">ON </option></select></td></tr>
+                       
+   <tr><td>Autopower off:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','AO','%00')">Never</option>
+		<option onclick="command('camera','AO','%01')">60s</option>
+		<option onclick="command('camera','AO','%02')">120s </option>
+		<option onclick="command('camera','AO','%03')">300s </option></select></td></tr>
+                    
+	<tr><td>Default mode:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','DM','%00')">Video</option>
+		<option onclick="command('camera','DM','%01')">Photo</option>	
+		<option onclick="command('camera','DM','%02')">Burst </option>
+		<option onclick="command('camera','DM','%03')">Timelapse </option></select></td></tr>
+                       
+	<tr><td>Onscreen display:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','OS','%00')">Off</option>
+		<option onclick="command('camera','OS','%01')">On</option></select></td></tr>
+                       
+	<tr><td>Locate:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','LL','%00')">Stop</option>
+		<option onclick="command('camera','LL','%01')">Start</option></select></td></tr>
+                       
+	<tr><td>Video Mode:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','VM','%00')">NTSC</option>
+		<option onclick="command('camera','VM','%01')">PAL</option></select></td></tr>
+                       
+	<tr><td>Continuous Shot:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','CS','%00')">Single</option>
+		<option onclick="command('camera','CS','%03')">3SPS</option>
+		<option onclick="command('camera','CS','%05')">5SPS</option>
+		<option onclick="command('camera','CS','%0a')">10SPS</option></select></td></tr>
+    
+    <tr><td>Burst Rate:</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','BU','%00')">3/1s</option>
+		<option onclick="command('camera','BU','%02')">10/1s</option>
+		<option onclick="command('camera','BU','%03')">10/2s</option>
+        <option onclick="command('camera','BU','%04')">30/1s</option>
+        <option onclick="command('camera','BU','%05')">30/2s</option>
+		<option onclick="command('camera','BU','%06')">30/3s</option></select></td></tr>
+
+    <tr><td>Delete files</td><td><select><option selected="selected">SELECT</option>
+		<option onclick="command('camera','DL','')">Delete Last File</option>
+		<option onclick="command('camera','DA',')">Delete All </option></select></td></tr>
+</table>
+  </div>
+</div>
+</body>
+</html>
