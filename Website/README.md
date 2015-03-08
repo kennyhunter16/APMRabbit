@@ -29,6 +29,7 @@ Here is a list of what needs to be done in order to get this to work
 ##How to Use
 
 The website is divided into multiple pages
+
 1. Home - Displays basic introduction information about the developers. Applications and copyright
 2. About - Information about the developers
 3. Stream - This page will display a window that will display the current stream of the camera. The page
