@@ -29,26 +29,20 @@ Here is a list of what needs to be done in order to get this to work
 ##How to Use
 
 The website is divided into multiple pages
-    - Home
-        Displays basic introduction information about the developers. Applications and copyright
-    - About
-        Information about the developers
-    - Stream
-        This page will display a window that will display the current stream of the camera. The page
+1. Home - Displays basic introduction information about the developers. Applications and copyright
+2. About - Information about the developers
+3. Stream - This page will display a window that will display the current stream of the camera. The page
         Is using VLC Web Plugin to perform the streaming functions.
         Below the window, will display a password field, the password is the same password you use when logging into
         Your device via WiFi. This is required before changing any mode functions.
         Once your password has been set. You may change the camera modes of the camera by selecting the 4 icons below
         (Video, Photo, Burst, Timelapse) - read GoPro docs for more information about the modes
         Then when you are ready you can apply the shutter functions below the mode!.
-    - Settings
-        The page is used to change all the advance settings of your GoPro. You will need to type in the password
+4. Settings -The page is used to change all the advance settings of your GoPro. You will need to type in the password
         That you used for your WiFi again in the password box above before changing settings. 
         The current settings can be changed by selecting something from the drop-down menus
-    - View Content
-        Still in development, need help from the community
-    - FAQ
-        Will be displaying FAQ that was asked into the page. 
+5. View Content - Still in development, need help from the community
+6. FAQ - Will be displaying FAQ that was asked into the page. 
 
 ##F.A.Q
     
