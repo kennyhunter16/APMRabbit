@@ -1,4 +1,4 @@
-#APMRabbit
+#APMRabbit Website
 
 Software created for the APMRover Project located (http://rover.ardupilot.com/). 
 
