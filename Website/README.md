@@ -11,10 +11,10 @@ GoPro cameras with WiFi.
 
 Here is a list of what needs to be there for this to work.
 
-1. GoPro Hero 3+
+1. GoPro Hero 2 or greater
 2. VLC Web Plugin
-3. GoPro WiFi Password to change mode settings
-4. Internet Browser (Tested on Firefox/Chrome)
+3. GoPro WiFi Password to change camera modes
+4. Internet Browser (Tested on Firefox/Chrome/Safari)
 
 
 ##Setup Process
@@ -28,9 +28,9 @@ Here is a list of what needs to be done in order to get this to work
 
 ##How to Use
 
-The website is divided into multiple pages
+The website is divided into multiple sections
 
-1. Home - Displays basic introduction information about the developers. Applications and copyright
+1. Home - Displays basic introduction  about the developers. Applications and copyright
 2. About - Information about the developers
 3. Stream - This page will display a window that will display the current stream of the camera. The page
         Is using VLC Web Plugin to perform the streaming functions.
