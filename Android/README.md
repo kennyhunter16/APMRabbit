@@ -31,4 +31,3 @@ Here is a simple setup guide for the GoPro Hero
 ##Layouts
 
 ![alt tag](http://hunterit.ca/APMRabbit/images/mainScreen.png)
-![alt tag](http://hunterit.ca/APMRabbit/images/settings.png)
