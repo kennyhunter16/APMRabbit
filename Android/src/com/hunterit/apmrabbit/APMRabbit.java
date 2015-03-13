@@ -3,13 +3,17 @@ package com.hunterit.apmrabbit;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
  
 public class APMRabbit extends FragmentActivity implements
         ActionBar.TabListener {
  
+	private static final int RESULT_SETTINGS = 1;
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
@@ -71,6 +75,26 @@ public class APMRabbit extends FragmentActivity implements
  
     @Override
     public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+    }
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.settings, menu);
+		return true;
+	}
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+
+		case R.id.menu_settings:
+			Intent i = new Intent(this, Settings.class);
+			startActivityForResult(i, RESULT_SETTINGS);
+			break;
+
+		}
+		return true;
+		
     }
  
 }

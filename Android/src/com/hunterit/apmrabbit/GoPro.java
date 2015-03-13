@@ -10,8 +10,11 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
  
-public class GoPro extends Fragment implements OnClickListener{
+public class GoPro extends Fragment implements OnClickListener, OnSharedPreferenceChangeListener{
 	
 	ImageButton videoMode, photoMode, burstMode, timelapseMode;
 	Button startrec, stoprec;
@@ -31,6 +34,9 @@ public class GoPro extends Fragment implements OnClickListener{
           Bundle savedInstanceState) {
     	
         View rootView = inflater.inflate(R.layout.fragment_gopro, container, false);
+        
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+			prefs.registerOnSharedPreferenceChangeListener(this);
         
         //Declare the Buttons
         videoMode =(ImageButton) rootView.findViewById(R.id.videoMode);
@@ -51,31 +57,158 @@ public class GoPro extends Fragment implements OnClickListener{
         return rootView;
     }
         
+    	/* Find correct mode based on button pressed by user */
        
     	public void onClick(View v) {
+    		
         	switch(v.getId()) {
             case R.id.videoMode:  //Change Mode to Video
-          	  new HttpAsyncTask().execute("http://10.5.5.9/camera/CM?t=APMRover&p=%00");
+          	  goProAction("camera","CM", "00");
               break;
             case R.id.photoMode:  //Change Mode to Photo
-               new HttpAsyncTask().execute("http://10.5.5.9/camera/CM?t=APMRover&p=%01");
+               goProAction("camera","CM", "01");
               break;
             case R.id.burstMode:  //Change Mode to Burst
-            	 new HttpAsyncTask().execute("http://10.5.5.9/camera/CM?t=APMRover&p=%02");
+            	 goProAction("camera","CM", "02");
                 break;
             case R.id.timelapseMode:  //Change Mode to Time Lapse
-            	 new HttpAsyncTask().execute("http://10.5.5.9/camera/CM?t=APMRover&p=%03");
+            	 goProAction("camera","CM", "03");
                 break;
             case R.id.startrec:  //Take a Picture / Start Recording
-            	new HttpAsyncTask().execute("http://10.5.5.9/bacpac/SH?t=APMRover&p=%01");
+            	goProAction("bacpac","SH", "01");
               break;
             case R.id.stoprec:  //Stop Recording / End Timelapse
-            	new HttpAsyncTask().execute("http://10.5.5.9/bacpac/SH?t=APMRover&p=%00");
+            	goProAction("bacpac","SH", "00");
                 break;
         	}
     	
 
     }
+    	
+    	/**
+    	 * goProAction
+    	 * 
+    	 * - Creates a link for the action based on the password
+    	 *   and link requirements
+    	 * 
+    	 * @param function  - get the first mode of the camera
+    	 * @param mode	- the short form URL link
+    	 * @param action  - the real action. read GoPro URL for more detail
+    	 */
+    	
+    	public void goProAction (String function, String mode, String action) 
+    	{
+    		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+    
+    		String password = preferences.getString("goProPassword", "NULL");
+    		
+    		StringBuilder url = new StringBuilder();
+    		url.append("http://10.5.5.9/");
+    		url.append(function + "/");
+    		url.append(mode + "?t=");
+    		url.append(password + "&p=%");
+    		url.append(action);
+    		String urlLink = url.toString();
+    		
+    		new HttpAsyncTask().execute(urlLink);
+    	}
+    	
+    	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+    			String key) {
+    		
+    		//Converts a Key String into int for switch statement
+    		int value = Integer.parseInt(key);
+    		String result = sharedPreferences.getString(key, "NULL");
+    		
+    		switch (value) {
+    			case 0:  //Video Resolutions
+    				goProAction("camera", "VV", result);
+    				break;
+    			case 1:  //Auto Low Light
+    				goProAction("camera", "LW", result);
+    				break;
+    			case 2: //ISO Gain
+    				goProAction("camera", "GA", result);
+    				break;
+    			case 3: //Colour Setting
+    				goProAction("camera", "CO", result);
+    				break;
+    			case 4: //Sharpness
+    				goProAction("camera", "SP", result);
+    				break;
+    			case 5: //Exposure
+    				goProAction("camera", "EV", result);
+    				break;
+    			case 6: //White Balance
+    				goProAction("camera", "WB", result);
+    				break;
+    			case 7: //Orientation
+    				goProAction("camera", "UP", result);
+    				break;
+    			case 8: //FOV
+    				goProAction("camera", "FV", result);
+    				break;
+    			case 9: //Photo Def
+    				goProAction("camera", "PR", result);
+    				break;
+    			case 10: //Timelapse
+    				goProAction("camera", "TI", result);
+    				break;
+    			case 11: //Volume
+    				goProAction("camera", "BS", result);
+    				break;
+    			case 12: //Loop Video
+    				goProAction("camera", "LO", result);
+    				break;
+    			case 13: //Protune
+    				goProAction("camera", "PT", result);
+    				break;
+    			case 14: //LEDS
+    				goProAction("camera", "LB", result);
+    				break;
+    			case 15: //Spot Meter
+    				goProAction("camera", "EX", result);
+    				break;
+    			case 16: //One Button
+    				goProAction("camera", "OB", result);
+    				break;
+    			case 17: //Power Off
+    				goProAction("camera", "AO", result);
+    				break;
+    			case 18: //Default Mode
+    				goProAction("camera", "DM", result);
+    				break;
+    			case 19: //On Screen Display
+    				goProAction("camera", "OS", result);
+    				break;
+    			case 20: //locate
+    				goProAction("camera", "LL", result);
+    				break;
+    			case 21: //Video Mode HDMI
+    				goProAction("camera", "VM", result);
+    				break;
+    			case 22: //Continuous Shot
+    				goProAction("camera", "CS", result);
+    				break;
+    			case 23: //Continuous Shot
+    				goProAction("camera", "BU", result);
+    				break;
+    			case 24: //Delete Files
+    				goProAction("camera", "DL", result);
+    				break;
+    		} 
+    					
+    	}
+
+    	
+    	
+    	/**
+    	 * GET
+    	 * 
+    	 * - Converts a url into a HTTP readable command
+    	 * 
+    	 * @param url  - get the input of the URL passed
+    	 */
     
     public static String GET(String url){
         InputStream inputStream = null;
@@ -114,8 +247,15 @@ public class GoPro extends Fragment implements OnClickListener{
         return result;
  
     }
+    
+    
+	/**
+	 * HttpAsyncTask
+	 * 
+	 * - Send the URL to the GoPro for the Command Action
+	 * 
+	 */
  
-    @SuppressWarnings("unused")
 	private class HttpAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -123,6 +263,6 @@ public class GoPro extends Fragment implements OnClickListener{
             return GET(urls[0]);
         }
        
-}
+	}
 
 }
