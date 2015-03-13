@@ -19,7 +19,7 @@ Here is a list of what needs to be there for this to work.
 
 Here is a simple setup guide for the GoPro Hero
 
-1. Download the application here
+1. Download the application [here](https://github.com/HunterIT/APMRabbit/blob/master/Android/bin/APMRabbit.apk?raw=true)
 2. Install it on your device
 3. In your WiFi manager, you will need to connect to your GoPro WiFi Network
 4. Open the Application
