@@ -21,4 +21,4 @@ Here is a list of what needs to be there for this to work.
 1. GoPro Hero 3+ (others will work, only Hero 3+ tested)
 2. Android 4.0 Ice Cream Sandwich or greater
 3. GoPro WiFi Password to change mode settings
-
+4. 3DR Add-on
