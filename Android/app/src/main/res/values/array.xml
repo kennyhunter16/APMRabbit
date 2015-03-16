@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="videoMode">
+        <item name="1">4K</item>
+        <item name="2">4K 17:9</item>
+        <item name="3">2.7K</item>
+        <item name="4">2K</item>
+        <item name="5">1440p</item>
+        <item name="6">1080 Superview</item>
+        <item name="7">1080</item>
+        <item name="8">960p</item>
+        <item name="9">720 Superview</item>
+        <item name="10">720p</item>
+    </string-array>
+	<string-array name="videoModeValues">
+        <item name="1">06</item>
+        <item name="2">08</item>
+        <item name="3">05</item>
+        <item name="4">07</item>
+        <item name="5">04</item>
+        <item name="6">09</item>
+        <item name="7">03</item>
+        <item name="8">02</item>
+        <item name="9">0a</item>
+        <item name="10">01</item>
+    </string-array>
+    
+	<string-array name="autoLowLight">
+        <item name="1">On</item>
+        <item name="2">Off</item>
+    </string-array>
+	<string-array name="autoLowLightValues">
+        <item name="1">01</item>
+        <item name="2">00</item>
+    </string-array>
+	
+	<string-array name="ISOGain">
+        <item name="1">6400</item>
+        <item name="2">1600</item>
+        <item name="3">400</item>
+    </string-array>
+	<string-array name="ISOGainValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+    </string-array>
+    
+	<string-array name="Colour">
+        <item name="1">Flat</item>
+        <item name="2">GoPro Colour</item>
+    </string-array>
+	<string-array name="ColourValues">
+        <item name="1">01</item>
+        <item name="2">00</item>
+    </string-array>
+    
+	<string-array name="Sharpness">
+        <item name="1">High</item>
+        <item name="2">Medium</item>
+        <item name="3">Low</item>
+    </string-array>
+	<string-array name="SharpnessValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+    </string-array>
+    
+	<string-array name="Exposure">
+        <item name="1">-2.0</item>
+        <item name="2">-1.5</item>
+        <item name="3">-1.0</item>
+        <item name="4">-0.5</item>
+        <item name="5">0</item>
+        <item name="6">+0.5</item>
+        <item name="7">+1.0</item>
+        <item name="8">+1.5</item>
+        <item name="9">+2.0</item>
+    </string-array>
+	<string-array name="ExposureValues">
+        <item name="1">06</item>
+        <item name="2">07</item>
+        <item name="3">08</item>
+        <item name="4">09</item>
+        <item name="5">10</item>
+        <item name="6">11</item>
+        <item name="7">12</item>
+        <item name="8">13</item>
+        <item name="9">14</item>
+    </string-array>
+    
+	<string-array name="WhiteBalance">
+        <item name="1">Auto</item>
+        <item name="2">3000k</item>
+        <item name="3">5500k</item>
+        <item name="4">6500k</item>
+        <item name="5">CAM Raw</item>
+    </string-array>
+	<string-array name="WhiteBalanceValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+        <item name="4">03</item>
+        <item name="5">04</item>
+        <item name="6">05</item>
+    </string-array>
+    
+	<string-array name="Orientation">
+        <item name="1">Up</item>
+        <item name="2">Down</item>
+    </string-array>
+	<string-array name="OrientationValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="FOV">
+        <item name="1">Wide</item>
+        <item name="2">Medium</item>
+        <item name="3">Narrow</item>
+    </string-array>
+	<string-array name="FOVValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+    </string-array>
+    
+	<string-array name="PhotoDefinition">
+        <item name="1">12MP Wide</item>
+        <item name="2">7MP Medium</item>
+        <item name="3">7MP Wide</item>
+        <item name="4">5MP Medium</item>
+    </string-array>
+	<string-array name="PhotoDefinitionValues">
+        <item name="1">05</item>
+        <item name="2">06</item>
+        <item name="3">04</item>
+        <item name="4">03</item>
+    </string-array>
+    
+	<string-array name="TimeLapseInt">
+        <item name="1">0.5 Seconds</item>
+        <item name="2">1 Second</item>
+        <item name="3">2 Seconds</item>
+        <item name="4">5 Seconds</item>
+        <item name="5">10 Seconds</item>
+        <item name="6">30 Seconds</item>
+        <item name="7">60 Seconds</item>   
+    </string-array>
+	<string-array name="TimeLapseIntValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+        <item name="4">05</item>
+        <item name="5">0a</item>
+        <item name="6">1e</item>
+        <item name="7">3c</item>
+    </string-array>
+    
+	<string-array name="Volume">
+        <item name="1">Mute</item>        <item name="3">03</item>
+        <item name="4">04</item>
+        <item name="5">05</item>
+        <item name="6">06</item>
+        <item name="2">70%</item>
+        <item name="3">100%</item>
+    </string-array>
+	<string-array name="VolumeValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+    </string-array>
+    
+	<string-array name="LoopVideo">
+        <item name="1">OFF</item>
+        <item name="2">5 Mins</item>
+        <item name="3">20 Mins</item>
+        <item name="4">60 Mins</item>
+        <item name="5">MAX</item>
+    </string-array>
+	<string-array name="LoopVideoValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+        <item name="4">03</item>
+        <item name="5">04</item>
+    </string-array>
+    
+	<string-array name="Protune">
+        <item name="1">OFF</item>
+        <item name="2">ON</item>
+    </string-array>
+	<string-array name="ProTuneValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="LED">
+        <item name="1">No LEDs</item>
+        <item name="2">2 LEDs</item>
+        <item name="3">4 LEDs</item>
+    </string-array>
+	<string-array name="LEDValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+    </string-array>
+    
+	
+	<string-array name="SpotMeter">
+        <item name="1">OFF</item>
+        <item name="2">ON</item>
+    </string-array>
+	<string-array name="SpotMeterValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="OneButton">
+        <item name="1">OFF</item>
+        <item name="2">ON</item>
+    </string-array>
+	<string-array name="OneButtonValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="AutoOff">
+        <item name="1">Never</item>
+        <item name="2">60s</item>
+        <item name="3">120s</item>
+        <item name="4">300s</item>
+    </string-array>
+	<string-array name="AutoOffValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+        <item name="4">03</item>
+    </string-array>
+    
+	<string-array name="StartUpMode">
+        <item name="1">Video</item>
+        <item name="2">Photo</item>
+        <item name="3">Burst</item>
+        <item name="4">Timelapse</item>
+    </string-array>
+	<string-array name="StartUpModeValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+        <item name="3">02</item>
+        <item name="4">03</item>
+    </string-array>
+    
+	<string-array name="OnScreenDisplay">
+        <item name="1">OFF</item>
+        <item name="2">ON</item>
+    </string-array>
+	<string-array name="OnScreenDisplayValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="Locate">
+        <item name="1">Stop</item>
+        <item name="2">Start</item>
+    </string-array>
+	<string-array name="LocateValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="HDMIVideoMode">
+        <item name="1">NTSC</item>
+        <item name="2">PAL</item>
+    </string-array>
+	<string-array name="HDMIVideoModeValues">
+        <item name="1">00</item>
+        <item name="2">01</item>
+    </string-array>
+    
+	<string-array name="ContinuousShot">
+        <item name="1">Single</item>
+        <item name="2">3SPS</item>
+        <item name="3">5SPS</item>
+        <item name="4">10SPS</item>
+    </string-array>
+	<string-array name="ContinuousShotValues">
+        <item name="1">00</item>
+        <item name="2">03</item>
+        <item name="3">05</item>
+        <item name="4">0a</item>
+    </string-array>
+    
+	<string-array name="BurstRate">
+        <item name="1">3/1sec</item>
+        <item name="2">10/1sec</item>
+        <item name="3">10/2sec</item>
+        <item name="4">30/1sec</item>
+        <item name="5">30/2sec</item>
+        <item name="6">30/3sec</item>
+    </string-array>
+	<string-array name="BurstRateValues">
+        <item name="1">00</item>
+        <item name="2">02</item>
+        <item name="3">03</item>
+        <item name="4">04</item>
+        <item name="5">05</item>
+        <item name="6">06</item>
+    </string-array>
+    
+	<string-array name="DeleteFiles">
+        <item name="1">Delete Last Save</item>
+        <item name="2">Format Memory Card</item>
+    </string-array>
+	<string-array name="DeleteFilesValues">
+        <item name="1"></item>
+        <item name="2"></item>
+    </string-array>
+	
+</resources>
