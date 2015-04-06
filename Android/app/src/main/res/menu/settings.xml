@@ -8,4 +8,10 @@
         android:title="@string/menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"/>
 
+    <item
+        android:id="@+id/testing"
+        android:orderInCategory="100"
+        android:title="Testing"
+        android:icon="@android:drawable/ic_menu_preferences"/>
+
 </menu>

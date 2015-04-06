@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/exploded-aar/com.o3dr/3dr-services-lib/2.2.6/libs/AidlLib.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="181bd7e6a7fac47fe53e8bd5e31fdaa45084e188">
+        <dex dex="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/AidlLib-dd452bfc21ec284c7253eec1fc3d10661ab3785e.jar" />
+    </item>
+    <item
+        jar="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/classes-8097c2effb358cff5d1125969e845e77ddf83fcf.jar" />
+    </item>
+    <item
+        jar="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/exploded-aar/com.o3dr/3dr-services-lib/2.2.6/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c4650e0255606dd851c4c964ff7b4b59af694d1">
+        <dex dex="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/classes-c1c465a250ef447ad471ad90bf0d247365531cf8.jar" />
+    </item>
+    <item
+        jar="/home/kennyhunter/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-d8e403c9b8075843744fad474fa0adc8c969e620.jar" />
+    </item>
+    <item
+        jar="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-7ac7c4eaccbcb176694905990be7830036e2f090.jar" />
+    </item>
+    <item
+        jar="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/classes-23ad46d94b4c7775a0d9d0b1a16e09adbb5b6af1.jar" />
+    </item>
+
+</items>

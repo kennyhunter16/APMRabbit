@@ -1,0 +1,7 @@
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/classes/debug
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-d8e403c9b8075843744fad474fa0adc8c969e620.jar
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/classes-c1c465a250ef447ad471ad90bf0d247365531cf8.jar
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-7ac7c4eaccbcb176694905990be7830036e2f090.jar
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/AidlLib-dd452bfc21ec284c7253eec1fc3d10661ab3785e.jar
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/classes-8097c2effb358cff5d1125969e845e77ddf83fcf.jar
+/home/kennyhunter/GitHub/APMRabbit/Android/app/build/intermediates/pre-dexed/debug/classes-23ad46d94b4c7775a0d9d0b1a16e09adbb5b6af1.jar

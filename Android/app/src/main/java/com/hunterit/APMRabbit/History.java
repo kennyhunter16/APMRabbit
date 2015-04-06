@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 public class History extends Fragment {
 
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -16,5 +15,4 @@ public class History extends Fragment {
 
         return rootView;
     }
-
 }

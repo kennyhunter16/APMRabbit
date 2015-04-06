@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="3dr-services-lib-2.2.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.o3dr/3dr-services-lib/2.2.6/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.o3dr/3dr-services-lib/2.2.6/libs/AidlLib.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.o3dr/3dr-services-lib/2.2.6/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

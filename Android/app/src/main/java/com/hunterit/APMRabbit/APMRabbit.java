@@ -84,7 +84,7 @@ public class APMRabbit extends FragmentActivity implements
         switch (item.getItemId()) {
 
             case R.id.menu_settings:
-                Intent i = new Intent(this, Settings.class);
+                Intent i= new Intent(this, Settings.class);
                 startActivityForResult(i, RESULT_SETTINGS);
                 break;
 
