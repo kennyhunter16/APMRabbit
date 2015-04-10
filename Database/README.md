@@ -8,7 +8,7 @@ The files that are used in the database are
 	- History.java				>> UI of the waypoint history
 	- WayPoints.java			>> Creates WayPoint object
 
-##Database Structure
+##Structure
 
 | NAME    |      TYPE     | INFO |
 | ------------- |:-------------:| -----:|
