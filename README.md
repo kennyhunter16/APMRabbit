@@ -1,4 +1,6 @@
-#APMRabbit
+#APMRabbit 
+
+Project Website: [http://www.hunterit.ca/APMRabbit] (http://hunterit.ca/APMRabbit "Go to Website")
 
 software created for the APMRover Project located (http://rover.ardupilot.com/). 
 APMRabbit was created by students for their final project. APMRabbit has two main applications, a website GoPro viewer
@@ -22,3 +24,4 @@ Here is a list of what needs to be there for this to work.
 2. Android 4.0 Ice Cream Sandwich or greater
 3. GoPro WiFi Password to change mode settings
 4. 3DR Add-on for Rover
+
