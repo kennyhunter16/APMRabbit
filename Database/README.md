@@ -3,10 +3,11 @@
 The database that is used in the Android project uses SQLite Database
 
 The files that are used in the database are
-	- MySQLDatabaseHelper.java  >> Helper Class
-	- DataSource.java			>> Class to create connections
-	- History.java				>> UI of the waypoint history
-	- WayPoints.java			>> Creates WayPoint object
+1) [MySQLDatabaseHelper.java](https://github.com/HunterIT/APMRabbit/blob/master/Android/app/src/main/java/com/hunterit/APMRabbit/MySQLiteHelper.java "Go to Java File")  >> Helper Class
+2) [DataSource.java](https://github.com/HunterIT/APMRabbit/blob/master/Android/app/src/main/java/com/hunterit/APMRabbit/DataSource.java "Go to Java File")DataSource.java			>> Class to create connections
+3) [History.java](https://github.com/HunterIT/APMRabbit/blob/master/Android/app/src/main/java/com/hunterit/APMRabbit/History.java "Go to Java File")			>> UI of the waypoint history
+4) [WayPoints.java](https://github.com/HunterIT/APMRabbit/blob/master/Android/app/src/main/java/com/hunterit/APMRabbit/WayPoints.java "Go to Java File")			>> Creates WayPoint object
+
 
 ##Structure
 
