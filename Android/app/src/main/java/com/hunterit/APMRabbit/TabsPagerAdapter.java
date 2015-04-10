@@ -15,14 +15,11 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
         switch (index) {
             case 0:
-                // Top Rated fragment activity
+                // GoPro fragment activity
                 return new GoPro();
             case 1:
-                // Games fragment activity
+                // Rover fragment activity
                 return new Rover();
-            case 2:
-                // Movies fragment activity
-                return new History();
         }
 
         return null;
@@ -31,7 +28,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // get item count - equal to number of tabs
-        return 3;
+        return 2;
     }
 
 }

@@ -12,7 +12,7 @@ public final class R {
 		public static final int dialog_install_button = 0x7f0a0042;
 		public static final int dialog_message = 0x7f0a0040;
 		public static final int dialog_title = 0x7f0a003f;
-		public static final int dialog_update_button = 0x7f0a005e;
+		public static final int dialog_update_button = 0x7f0a005f;
 	}
 	public static final class layout {
 		public static final int activity_install_service_dialog = 0x7f030017;

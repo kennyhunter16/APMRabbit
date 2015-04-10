@@ -13,22 +13,28 @@
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add New"
-            android:onClick="onClick"/>
+            android:onClick="onClick"
+            android:text="add new" />
 
         <Button
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete First"
-            android:onClick="onClick"/>
+            android:onClick="onClick"
+            android:text="delete first" />
 
+        <Button
+            android:id="@+id/deleteall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="delete all" />
     </LinearLayout>
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello" />
+        android:text="hello" />
 
 </LinearLayout><!-- From: file:/home/kennyhunter/GitHub/APMRabbit/Android/app/src/main/res/layout/activity_testing.xml -->

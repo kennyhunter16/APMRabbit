@@ -17,7 +17,7 @@ public class APMRabbit extends FragmentActivity implements
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "GoPro", "Rover", "History" };
+    private String[] tabs = { "GoPro", "Rover"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,10 @@ public class APMRabbit extends FragmentActivity implements
             case R.id.menu_settings:
                 Intent i= new Intent(this, Settings.class);
                 startActivityForResult(i, RESULT_SETTINGS);
+                break;
+            case R.id.testing:
+                Intent j= new Intent(this, History.class);
+                startActivityForResult(j, RESULT_SETTINGS);
                 break;
 
         }

@@ -26,8 +26,8 @@
             android:label="Settings" >
         </activity>
         <activity
-            android:name="com.hunterit.APMRabbit.Testing"
-            android:label="@string/title_activity_testing" >
+            android:name="com.hunterit.APMRabbit.History"
+            android:label="Waypoints" >
         </activity>
         <activity
             android:name="com.o3dr.android.client.utils.InstallServiceDialog"

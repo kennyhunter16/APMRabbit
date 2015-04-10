@@ -11,7 +11,7 @@ public class Settings extends PreferenceActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("APMRabbit GoPro Settings");
+        setTitle("GoPro Settings");
         addPreferencesFromResource(R.xml.preferences);
     }
 

@@ -20,8 +20,8 @@
             android:label="Settings" >
         </activity>
         <activity
-            android:name=".Testing"
-            android:label="@string/title_activity_testing" >
+            android:name=".History"
+            android:label="Waypoints" >
         </activity>
     </application>
 

@@ -110,14 +110,13 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
 
     @Override
     public void onTowerConnected() {
-        alertUser("3DR Services Connected");
         this.controlTower.registerDrone(this.drone, this.handler);
         this.drone.registerDroneListener(this);
     }
 
     @Override
     public void onTowerDisconnected() {
-        alertUser("3DR Service Interrupted");
+
     }
 
     // Drone Listener
@@ -128,13 +127,13 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
 
         switch (event) {
             case AttributeEvent.STATE_CONNECTED:
-                alertUser("Drone Connected");
+                alertUser("Rover Connected");
                 updateConnectedButton(this.drone.isConnected());
 
                 break;
 
             case AttributeEvent.STATE_DISCONNECTED:
-                alertUser("Drone Disconnected");
+                alertUser("Rover Disconnected");
                 updateConnectedButton(this.drone.isConnected());
                 break;
 

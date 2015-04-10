@@ -46,7 +46,7 @@ ADDED from AndroidManifest.xml:18:9
 		ADDED from AndroidManifest.xml:20:13
 	android:name
 		ADDED from AndroidManifest.xml:19:13
-activity#com.hunterit.APMRabbit.Testing
+activity#com.hunterit.APMRabbit.History
 ADDED from AndroidManifest.xml:22:9
 	android:label
 		ADDED from AndroidManifest.xml:24:13
