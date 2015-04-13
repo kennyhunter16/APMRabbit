@@ -45,12 +45,24 @@ public class DataSource {
     }
 
 
-    public void rename(String old_name, String new_name) {
+    public void rename(long id, String name) {
 
-        String update = "UPDATE " + MySQLiteHelper.COL_NAME + " SET " + MySQLiteHelper.COL_NAME
-                + " = " + new_name + " WHERE " + MySQLiteHelper.COL_NAME + " = " + old_name;
+        String new_name = "'" + name + "'";
+
+        String update = "UPDATE " + MySQLiteHelper.TABLE_NAME + " SET " + MySQLiteHelper.COL_NAME
+                + " = " + new_name + " WHERE " + MySQLiteHelper.COL_ID + "=" + id;
 
         db.execSQL(update);
+        db.close();
+    }
+
+    //UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
+
+    public void delete (long id)
+    {
+        String delete = "DELETE FROM "+ MySQLiteHelper.TABLE_NAME +
+                        " WHERE " + MySQLiteHelper.COL_ID + " = " + id;
+        db.execSQL(delete);
         db.close();
     }
 
@@ -76,8 +88,8 @@ public class DataSource {
     private WayPoints save(Cursor cursor) {
         WayPoints entry = new WayPoints();
         entry.setID(cursor.getLong(0));
-        entry.setTimestamp(cursor.getString(1));
-        entry.setLocation(cursor.getString(2));
+        entry.setLocation(cursor.getString(1));
+        entry.setTimestamp(cursor.getString(2));
         entry.setName(cursor.getString(3));
         return entry;
     }

@@ -22,9 +22,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
              + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-             + COL_LOCATION + "VARCHAR, "
-             + COL_TIMESTAMP + "VARCHAR, "
-             + COL_NAME + "VARCHAR);";
+             + COL_LOCATION + " VARCHAR, "
+             + COL_TIMESTAMP + " VARCHAR, "
+             + COL_NAME + " VARCHAR);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

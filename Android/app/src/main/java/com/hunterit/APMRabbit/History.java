@@ -41,8 +41,15 @@ public class History extends Activity {
         search = (Button) findViewById(R.id.searchButton);
         inputField = (EditText) findViewById(R.id.searchText);
 
+        //Create a connection to the database
+        datasource = new DataSource(this);
+        datasource.open();
+
+        values = datasource.getAllWaypoints();
+
         registerForContextMenu(listView);
 
+        datasource.open();
         refreshList(null);
 
         addPoint.setOnClickListener(new OnClickListener() {
@@ -56,29 +63,37 @@ public class History extends Activity {
                 Time today = new Time(Time.getCurrentTimezone());
                 today.setToNow();
 
-                String message =   "Name: " + inputResult + "\n"
-                                 + "Location: " + "43.2425, 34.2425" + "\n"
-                                 + "Timestamp: " + today.format("%k:%M:%S") + "\n";
+                if (inputResult.matches("")) {
+                    Toast.makeText(getApplicationContext(), "Please fill in the box before adding location",
+                            Toast.LENGTH_SHORT).show();
+                }
 
-                builder.setMessage(message);
+                else {
 
-                // Set up the buttons
-                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Add input to Database
-                        datasource.create("43.2425, 34.2425", inputField.getText().toString().trim());
-                        refreshList(null);
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                    String message = "Name: " + inputResult + "\n"
+                            + "Location: " + "43.2425, 34.2425" + "\n"
+                            + "Timestamp: " + today.format("%k:%M:%S") + "\n";
 
-                builder.show();
+                    builder.setMessage(message);
+
+                    // Set up the buttons
+                    builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Add input to Database
+                            datasource.create("43.2425, 34.2425", inputField.getText().toString().trim());
+                            refreshList(null);
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
+                }
             }
             }
         );
@@ -89,7 +104,6 @@ public class History extends Activity {
              public void onClick(View arg0) {
 
               String inputResult = inputField.getText().toString().trim();
-                 System.out.println(inputResult);
                if (inputResult.matches("")) {
                    Toast.makeText(getApplicationContext(), "Please fill in the box before selecting",
                            Toast.LENGTH_SHORT).show();
@@ -111,7 +125,6 @@ public class History extends Activity {
     public void refreshList(String search) {
 
         //Create a connection to the database
-        datasource = new DataSource(this);
         datasource.open();
 
         values = datasource.getAllWaypoints();
@@ -141,30 +154,29 @@ public class History extends Activity {
         MenuInflater inflater =getMenuInflater();
         inflater.inflate(R.menu.option_menu, menu);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-        int position = info.position;
-
-        System.out.println("Value of Position: " + position);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo contextMenuInfo=(AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
 
-        System.out.println(item.getTitle());
-        switch(item.getItemId())
-        {
+        final int number = contextMenuInfo.position;
+
+        switch(item.getItemId()){
             case R.id.send:
                 System.out.println("SEND SELECTED");
                 break;
             case R.id.view:
-                System.out.println("VIEW SELECTED");
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("View");
 
-                String message =   "Name: " + "Awesome" + "\n"
-                        + "Location: " + "43.2425, 34.2425" + "\n"
-                        + "Timestamp: " + "April 2nd, 2014" + "\n";
+                String name = values.get(number).getName();
+                String location = values.get(number).getLocation();
+                String timestamp = values.get(number).getTimestamp();
+
+                String message =   "Name: " + name + "\n"
+                        + "Location: " + location + "\n"
+                        + "Timestamp: " + timestamp + "\n";
 
                 builder.setMessage(message);
 
@@ -179,25 +191,27 @@ public class History extends Activity {
                 builder.show();
                 break;
             case R.id.rename:
-                System.out.println("RENAME SELECTED");
-
                 AlertDialog.Builder renameBox = new AlertDialog.Builder(context);
-                renameBox.setTitle("Rename");
+                renameBox.setTitle("Rename Waypoint");
 
                 // Set an EditText view to get user input
                 final EditText input = new EditText(this);
                 renameBox.setView(input);
 
                 String mess =   "What will you like to rename too?";
-
                 renameBox.setMessage(mess);
+
 
                 // Set up the buttons
                 renameBox.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Add input to Database
-                        Editable value = input.getText();
+                        String new_name = input.getText().toString().trim();
+                        long id = values.get(number).getID();
+                        datasource.rename(id, new_name);
+                        refreshList(null);
+
                     }
                 });
                 renameBox.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -209,8 +223,11 @@ public class History extends Activity {
 
                 renameBox.show();
                 break;
+
             case R.id.delete:
-                System.out.println("DELETE SELECTED");
+                long id = values.get(number).getID();
+                datasource.delete(id);
+                refreshList(null);
                 break;
         }
 
