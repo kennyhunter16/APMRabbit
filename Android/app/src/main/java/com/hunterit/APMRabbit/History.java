@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.format.Time;
 import android.view.ContextMenu;
@@ -19,7 +21,9 @@ import android.widget.ListView;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class History extends Activity {
@@ -45,43 +49,58 @@ public class History extends Activity {
         datasource = new DataSource(this);
         datasource.open();
 
+        //Load all the Values of the Waypoints
         values = datasource.getAllWaypoints();
 
         registerForContextMenu(listView);
 
-        datasource.open();
+        //Update List
         refreshList(null);
 
         addPoint.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Are you sure?");
 
-                String inputResult = inputField.getText().toString().trim();
-                Time today = new Time(Time.getCurrentTimezone());
-                today.setToNow();
+                final String inputResult = inputField.getText().toString().trim();
+
+                SimpleDateFormat fmt = new SimpleDateFormat("MMMM d, yyyy hh:mm a");
+                Date date = new Date();
+                final String timestamp = fmt.format(date);
+
+                //Get the Rover Location
+                Rover roverInfo = new Rover();
+                SharedPreferences location = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String roverLocation = location.getString("Location","");
+
+                if (roverLocation == null)  roverLocation = "No Location Found";
+
 
                 if (inputResult.matches("")) {
                     Toast.makeText(getApplicationContext(), "Please fill in the box before adding location",
                             Toast.LENGTH_SHORT).show();
                 }
 
+
                 else {
 
                     String message = "Name: " + inputResult + "\n"
-                            + "Location: " + "43.2425, 34.2425" + "\n"
-                            + "Timestamp: " + today.format("%k:%M:%S") + "\n";
+                            + "Location: " + roverLocation + "\n"
+                            + "Timestamp: " + timestamp + "\n";
 
                     builder.setMessage(message);
+
+                    final String thelocation = roverLocation;
 
                     // Set up the buttons
                     builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //Add input to Database
-                            datasource.create("43.2425, 34.2425", inputField.getText().toString().trim());
+                            datasource.create(thelocation, inputResult, timestamp);
                             refreshList(null);
                         }
                     });
@@ -114,12 +133,9 @@ public class History extends Activity {
               else {
                    refreshList(inputResult);
                }
-
             }
          }
         );
-
-
         }
 
     public void refreshList(String search) {
@@ -198,7 +214,7 @@ public class History extends Activity {
                 final EditText input = new EditText(this);
                 renameBox.setView(input);
 
-                String mess =   "What will you like to rename too?";
+                String mess = "What will you like to rename too?";
                 renameBox.setMessage(mess);
 
 

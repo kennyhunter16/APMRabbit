@@ -2,6 +2,8 @@ package com.hunterit.APMRabbit;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -53,7 +55,12 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
 
     View rootView;
 
+    SharedPreferences location;
+
     Spinner modeSelector;
+
+
+    public Rover() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -163,10 +170,7 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
                 updateDistanceFromHome();
                 break;
 
-
-
             default:
-//                Log.i("DRONE_EVENT", event); //Uncomment to see events from the drone
                 break;
         }
 
@@ -227,6 +231,14 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
         TextView speedView= (TextView)rootView.findViewById(R.id.speedValueView);
         Speed rabbitSpeed = this.drone.getAttribute(AttributeType.SPEED);
         speedView.setText(String.format("%3.1f", rabbitSpeed.getGroundSpeed()) + "m/s");
+    }cd 
+
+    public String getLocation() {
+
+        location = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        String roverLocation = location.getString("Location","");
+        return roverLocation;
+
     }
 
 
@@ -253,7 +265,14 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
         }
 
         distanceTextView.setText(String.format("%3.1f", distanceFromHome) + "m");
-        location.setText("(" + String.format("%3.1f", latitude) + "," + String.format("%3.1f", longitude) + ",");
+
+        String output = "(" + String.format("%3.1f", latitude) + "," + String.format("%3.1f", longitude) + ",";
+        location.setText(output);
+
+        SharedPreferences loc = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor editor = loc.edit();
+        editor.putString("Location",output);
+        editor.apply();
 
     }
 

@@ -41,7 +41,7 @@ public class WayPoints {
 
     public String getLocation() { return location; }
 
-    // setting locatin
+    // setting location
     public void setLocation(String location){
         this.location = location;
     }

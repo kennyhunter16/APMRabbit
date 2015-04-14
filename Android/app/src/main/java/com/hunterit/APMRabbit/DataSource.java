@@ -2,13 +2,11 @@ package com.hunterit.APMRabbit;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.format.Time;
-import android.util.Log;
 
 public class DataSource {
 
@@ -27,16 +25,13 @@ public class DataSource {
         dbHelper.close();
     }
 
-    public void create(String location, String name) {
-        //Get the current time for a timestamp
-        Time today = new Time(Time.getCurrentTimezone());
-        today.setToNow();
+    public void create(String location, String name, String timestamp) {
 
         //SQL Statement
         String insert = "INSERT INTO " + MySQLiteHelper.TABLE_NAME + " VALUES("
                 + null + ","
                 + "'" + location + "',"
-                + "'" + today.format("%k:%M:%S") + "',"
+                + "'" + timestamp + "',"
                 + "'" + name + "')";
 
         //Load into the Database
