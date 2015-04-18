@@ -40,6 +40,7 @@ import com.o3dr.services.android.lib.drone.property.State;
 import com.o3dr.services.android.lib.drone.property.Type;
 import com.o3dr.services.android.lib.drone.property.VehicleMode;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -231,7 +232,7 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
         TextView speedView= (TextView)rootView.findViewById(R.id.speedValueView);
         Speed rabbitSpeed = this.drone.getAttribute(AttributeType.SPEED);
         speedView.setText(String.format("%3.1f", rabbitSpeed.getGroundSpeed()) + "m/s");
-    }cd 
+    }
 
     public String getLocation() {
 
@@ -240,7 +241,6 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
         return roverLocation;
 
     }
-
 
     protected void updateDistanceFromHome() {
         TextView distanceTextView = (TextView)rootView.findViewById(R.id.DistanceValueView);
@@ -266,7 +266,9 @@ public class Rover extends Fragment implements DroneListener, TowerListener {
 
         distanceTextView.setText(String.format("%3.1f", distanceFromHome) + "m");
 
-        String output = "(" + String.format("%3.1f", latitude) + "," + String.format("%3.1f", longitude) + ",";
+        DecimalFormat df = new DecimalFormat("00.000000"); // Set format
+
+        String output = "(" + df.format(latitude)+ "," + df.format(longitude) + ")";
         location.setText(output);
 
         SharedPreferences loc = PreferenceManager.getDefaultSharedPreferences(getActivity());

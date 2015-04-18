@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,10 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.VideoView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -33,13 +36,13 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
 
     ImageButton videoMode, photoMode, burstMode, timelapseMode;
     Button startrec, stoprec;
+    VideoView stream;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_gopro, container, false);
-
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -51,6 +54,7 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
         timelapseMode = (ImageButton) rootView.findViewById(R.id.timelapseMode);
         startrec = (Button) rootView.findViewById(R.id.startrec);
         stoprec = (Button) rootView.findViewById(R.id.stoprec);
+        stream = (VideoView) rootView.findViewById(R.id.videoView1);
 
         //Declare Listeners
         videoMode.setOnClickListener(this);
@@ -59,6 +63,11 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
         timelapseMode.setOnClickListener(this);
         startrec.setOnClickListener(this);
         stoprec.setOnClickListener(this);
+
+        String streamURL = "http://10.5.5.9:8080/live/amba.m3u8";
+        //Start the Stream
+        stream.setVideoPath(streamURL);
+        stream.start();
 
         return rootView;
     }
@@ -91,6 +100,7 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
 
     }
 
+
     /**
      * goProAction
      * <p/>
@@ -103,8 +113,8 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
      */
 
     public void goProAction(String function, String mode, String action) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String password = preferences.getString("goProPassword", "NULL");
 
         StringBuilder url = new StringBuilder();
@@ -121,8 +131,11 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
                                           String key) {
 
-        //Converts a Key String into int for switch statement
-        int value = Integer.parseInt(key);
+        int value;
+
+        if (key.equals("goProPassword") || key.equals("Location")) value = 25;
+        else value = Integer.parseInt(key);
+
         String result = sharedPreferences.getString(key, "NULL");
 
         switch (value) {
@@ -201,24 +214,16 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
             case 24: //Delete Files
                 goProAction("camera", "DL", result);
                 break;
+            case 25: //GoProPassword
+                break;
         }
 
     }
-
-
-    /**
-     * GET
-     * <p/>
-     * - Converts a url into a HTTP readable command
-     *
-     * @param url - get the input of the URL passed
-     */
 
     public static String GET(String url) {
         InputStream inputStream = null;
         String result = "";
         try {
-
             HttpClient httpclient = new DefaultHttpClient();
 
             // make GET request to the given URL
@@ -265,7 +270,17 @@ public class GoPro extends Fragment implements View.OnClickListener, SharedPrefe
 
             return GET(urls[0]);
         }
-
     }
 
+    public Boolean isOnline(String url) {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 " + url);
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

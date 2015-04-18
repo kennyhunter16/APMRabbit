@@ -12,9 +12,11 @@
 
         <VideoView
             android:id="@+id/videoView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
 
     </RelativeLayout>
 
@@ -83,8 +85,8 @@
             <Button
                 android:id="@+id/startrec"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_height="88dp"
+                android:layout_weight="0.1"
                 android:text="@string/record" />
 
             <Button

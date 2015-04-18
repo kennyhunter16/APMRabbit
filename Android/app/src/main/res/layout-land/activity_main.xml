@@ -35,11 +35,11 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:layout_below="@+id/telemetryLabel"
+        android:id="@+id/tableLayout"
+        android:layout_below="@+id/connectionLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tableLayout">
+        android:layout_alignBottom="@+id/telemetryLabel">
 
         <TableRow
             android:layout_width="fill_parent"
