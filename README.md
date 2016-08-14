@@ -1,8 +1,6 @@
 #APMRabbit 
 
-Project Website: [http://www.hunterit.ca/APMRabbit] (http://hunterit.ca/APMRabbit "Go to Website")
-
-software created for the APMRover Project located (http://rover.ardupilot.com/). 
+Android & Website software created for the APMRover Project located (http://rover.ardupilot.com/). 
 APMRabbit was created by students for their final project. APMRabbit has two main applications, a website GoPro viewer
 application listed under /Website. APMRabbit has a Android (4.0 or greater) application used to control, view and
 save data from the APMRover unit. 
